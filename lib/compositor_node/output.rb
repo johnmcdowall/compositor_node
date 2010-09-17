@@ -9,7 +9,7 @@ module CompositorNode
 		end
 
 		def write(path)
-			output = source.execute.resize(@width, @height)
+			output = source.execute.resize(@width, @height) if @width || @height
 			output.write(path)
 		end
 	end

@@ -1,0 +1,26 @@
+Compositor Node
+===============
+
+Node based composition:
+http://en.wikipedia.org/wiki/Digital_compositing#Node-based_and_layer-based_compositing
+
+The intention of this library is to make it easy to build up a structure of nodes which will then be output to a flat file. Imagine using this library as part of a web-app that makes it easy to manipulate images in a structured, visual way (without say, Photoshop).
+
+To run the example, type:
+
+>> ruby main.rb
+
+This will:
+
+- Create an image node from a large image ($oversized_image)
+- Create an image node of some text (transparent PNG) ($overlay_text)
+
+- Create a resizer node which resizes its source ($oversized_image) to new dimensions
+
+- Create a blender node which mixes together its sources (the resized $oversized_image, $overlay_text) using a 'multiply' method
+
+- Create an output node which will write out it's source (the output of $blender) at a paticular size, to data/output.png
+
+Licensed under MIT (see MIT-LICENSE.txt)
+
+Copyright (c) 2010 Andrew Donaldson http://dies-el.co.uk/
