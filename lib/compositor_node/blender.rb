@@ -1,20 +1,25 @@
 module CompositorNode
   class Blender
-    attr_accessor :source_a, :source_b, :method
+    attr_accessor :source_a, :source_b, :x_offset, :y_offset, :method
 
-    MULTIPLY = Magick::MultiplyCompositeOp
+    MULTIPLY = 'MULTIPLY'
+    OVERLAY = 'OVERLAY'
+
+    class NoBlendMethodError < RuntimeError; end
 
     def initialize(options = {})
       @source_a = options[:source_a]
       @source_b = options[:source_b]
       @method = options[:method]
+      @x_offset = options[:x_offset] || 0
+      @y_offset = options[:y_offset] || 0
     end
 
     def execute
       image_a = @source_a.execute
       image_b = @source_b.execute
 
-      image_a.composite(image_b, 0, 0, @method)
+      Engine.blend(image_a, image_b, @x_offset, @y_offset, @method)
     end
   end
 end

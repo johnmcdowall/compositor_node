@@ -7,7 +7,7 @@ module CompositorNode
     end
 
     def execute
-      Magick::ImageList.new(@source)
+      Engine.read(@source)
     end
   end
 end

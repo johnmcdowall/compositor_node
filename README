@@ -16,10 +16,13 @@ This will:
 - Create an image node of some text (transparent PNG) ($overlay_text)
 
 - Create a resizer node which resizes its source ($oversized_image) to new dimensions
+- Create a resizer node which resizes its source ($overlay_text) to new dimensions (only width is supplied so it keeps aspect ratio)
 
-- Create a blender node which mixes together its sources (the resized $oversized_image, $overlay_text) using a 'multiply' method
+- Create a blender node which mixes together its sources (the resized $oversized_image, $overlay_text) using a 'multiply' method. Offsets $overlay_text by 50 pixels.
 
-- Create an output node which will write out it's source (the output of $blender) at a paticular size, to data/output.png
+- Create a cropper node which crops the source ($blender) to a particular size / offset
+
+- Create an output node which will write out it's source (the output of $cropper) at a paticular size, to data/output.png
 
 Licensed under MIT (see MIT-LICENSE.txt)
 
